@@ -1,0 +1,31 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+group='ml.dima_dencep.bettermcbot'
+archivesBaseName="BetterMcBot"
+version='5.0'
+
+compileJava.options.encoding = 'UTF-8'
+
+repositories {
+	mavenCentral()
+	jcenter()
+	maven { url 'https://jitpack.io' }
+}
+
+configurations {
+	bundle
+	compile.extendsFrom bundle
+}
+
+dependencies {
+	bundle 'io.netty:netty-all:4.1.9.Final'
+	bundle "org.jsoup:jsoup:1.14.2"
+}
+
+jar {
+	from { configurations.bundle.collect { it.isDirectory() ? it : zipTree(it) } }
+	manifest {
+		attributes 'Main-Class': 'ml.dima_dencep.bettermcbot.Main'
+	}
+}
