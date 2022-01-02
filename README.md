@@ -1,7 +1,9 @@
 # BetterMcBot
 Minecraft bots based on MCBot
 
-Dev source on [dev](https://github.com/dimadencep/BetterMcBot/tree/dev) branch!
+Demo: [youtube](https://youtu.be/wXzX78S1hJA)
+
+Dev source on [dev](https://github.com/dimadencep/BetterMcBot/tree/dev) branch
 
 # Build
 - Download repo: `git clone https://github.com/dimadencep/BetterMcBot.git`
