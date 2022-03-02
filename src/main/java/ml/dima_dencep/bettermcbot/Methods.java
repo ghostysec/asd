@@ -30,16 +30,13 @@ public class Methods {
       registerMethod("gayspam", new GaySpam());
       registerMethod("handshake", new HandshakeMethod());
       registerMethod("invaliddata", new InvalidData());
-      registerMethod("invalidspoof", new InvalidIPSpoof());
       registerMethod("invalidnames", new InvalidNames());
       registerMethod("spoof", new IPSpoof());
       registerMethod("join", new Join());
       registerMethod("legacyping", new LegacyPing());
       registerMethod("legitnamejoin", new LegitNameKiller());
-      registerMethod("localhost", new Localhost());
       registerMethod("pingjoin", new LoginPingMulticrasher());
       registerMethod("longhost", new LongHost());
-      registerMethod("longnames", new LongNames());
       registerMethod("nullping", new NullPing());
       registerMethod("ping", new Ping());
       registerMethod("query", new QueryFlood());

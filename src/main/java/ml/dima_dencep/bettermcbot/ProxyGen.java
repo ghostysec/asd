@@ -18,9 +18,13 @@ public class ProxyGen {
     private List<String> proxies = new CopyOnWriteArrayList<>();
     private File proxyFile;
 
-    public ProxyGen(File proxyFile, String[] args) {
+    public ProxyGen(File proxyFile) {
         System.out.println("Parsing proxy...");
         this.proxyFile = proxyFile;
+
+        if (!Main.genProxy) {
+            return;
+        }
 
         try {
             Document proxyLists = Jsoup.connect("https://api.proxyscrape.com/v2/?request=displayproxies&proxytype=socks4").get();
