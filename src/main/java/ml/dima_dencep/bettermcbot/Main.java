@@ -15,6 +15,7 @@ public class Main {
    public static int port;
    public static int protcolID;
    public static int protocolLength;
+   public static boolean genProxy;
    public static String methodID;
    public static Method method;
    public static int duration;
@@ -30,32 +31,41 @@ public class Main {
       System.out.println("Starting Better Mc Bot...");
       Scanner in = new Scanner(System.in);
 
-      Integer cpuselect;
+      int cpuselect;
       String serverhp;
-      if (args.length != 5) {
-         System.out.println("You server <IP:PORT>:");
-         serverhp = in.nextLine();
+      int protcol;
+      String method;
+      boolean proxyGen;
+      int dura;
 
-         System.out.println("Server protocol (https://wiki.vg/Protocol_version_numbers):");
-         protcolID = Integer.parseInt(in.nextLine());
+      System.out.println("You server <IP:PORT>:");
+      serverhp = in.nextLine();
 
-         System.out.println("Method:");
-         methodID = in.nextLine();
+      System.out.println("Server protocol (https://wiki.vg/Protocol_version_numbers):");
+      protcol = Integer.parseInt(in.nextLine());
 
-         System.out.println("Time (secons):");
-         duration = Integer.parseInt(in.nextLine());
+      System.out.println("Method:");
+      method = in.nextLine();
 
-         System.out.println("Target cpu (-1 for max):");
-         cpuselect = Integer.parseInt(in.nextLine());
-      } else {
-         serverhp = args[0];
-         protcolID = Integer.parseInt(args[1]);
-         methodID = args[2];
-         duration = Integer.parseInt(args[3]);
-         cpuselect = Integer.parseInt(args[4]);
-      }
+      System.out.println("Time (secons):");
+      dura = Integer.parseInt(in.nextLine());
 
-      proxies = new ProxyGen(new File("proxies.txt"), args).load();
+      System.out.println("Target cpu (-1 for max):");
+      cpuselect = Integer.parseInt(in.nextLine());
+
+      System.out.println("Gen new proxy?:");
+      proxyGen = Boolean.parseBoolean(in.nextLine());
+
+      start(serverhp, protcol, method, dura, cpuselect, proxyGen);
+   }
+
+   public static void start(String serverhp, int protcol, String method, int dura, int cpuselect, boolean proxy) throws Throwable {
+      duration = dura;
+      protcolID = protcol;
+      methodID = method;
+      genProxy = proxy;
+
+      proxies = new ProxyGen(new File("proxies.txt")).load();
 
       try {
          System.out.println("Resolving IP...");
@@ -82,8 +92,8 @@ public class Main {
       }
 
       Methods.setupMethods();
-      method = Methods.getMethod(methodID);
-      System.out.println("Running metod: " + method.toString());
+      Main.method = Methods.getMethod(methodID);
+      System.out.println("Running metod: " + Main.method.getClass().getName());
       NettyBootstrap.start();
    }
 }
