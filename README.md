@@ -3,7 +3,7 @@ Minecraft bots based on MCBot
 
 Demo: [youtube](https://youtu.be/wXzX78S1hJA)
 
-Dev source on [dev](https://github.com/dimadencep/BetterMcBot/tree/dev) branch
+BotNet source on [BetterBotNet](https://github.com/dimadencep/BetterMcBot/tree/bbn) branch
 
 # Build
 - Download repo: `git clone https://github.com/dimadencep/BetterMcBot.git`
